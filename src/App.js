@@ -1,6 +1,6 @@
 // import React from "react"
 // import unsplash from "./api/unsplash"
-// import SearchBar from "./components/SearchBar"
+import SearchBar from "./components/SearchBar"
 // import ImageList from "./components/ImageList"
 
 // class App extends React.Component {
@@ -27,8 +27,14 @@
 // export default App
 
 function App() {
+  const handleSubmit = (term) => {
+    console.log(term)
+  }
+
   return (
-    <div>App</div>
+    <div>
+      <SearchBar onSubmit={handleSubmit} />
+    </div>
   )
 }
 

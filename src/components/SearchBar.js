@@ -28,10 +28,27 @@
 // }
 
 // export default SearchBar
+import { useState } from "react"
 
-const SearchBar = () => {
+function SearchBar({ onSubmit }) {
+  const [term, setTerm] = useState("")
+
+  const handleFormSubmit = (event) => {
+   event.preventDefault()
+
+   onSubmit("cats")
+  }
+
+  const handleChange = (event) => {
+    //replace lowercase letters with empty string
+    setTerm(event.target.value)
+  }
   return (
-    <div>SearchBar</div>
+    <div>
+      <form onSubmit={handleFormSubmit}>
+      <input value={term} onChange={handleChange}/>
+      </form>
+    </div>
   )
 }
 
