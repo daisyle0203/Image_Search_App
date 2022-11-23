@@ -1,7 +1,8 @@
 // import React from "react"
-// import unsplash from "./api/unsplash"
+import { useState } from "react"
 import SearchBar from "./components/SearchBar"
-// import ImageList from "./components/ImageList"
+import searchImages from "./api/unsplash"
+import ImageList from "./components/ImageList"
 
 // class App extends React.Component {
 //   state = { images: [] }
@@ -21,19 +22,24 @@ import SearchBar from "./components/SearchBar"
 //         <ImageList images={this.state.images} />
 //       </div>
 //     )
-//   }
+//    }
 // }
 
 // export default App
 
 function App() {
-  const handleSubmit = (term) => {
-    console.log(term)
+  const [images, setImage] = useState([])
+
+  const handleSubmit = async (term) => {
+    const result = await searchImages(term)
+
+    setImage(result)
   }
 
   return (
     <div>
       <SearchBar onSubmit={handleSubmit} />
+      <ImageList images={images}/>
     </div>
   )
 }
